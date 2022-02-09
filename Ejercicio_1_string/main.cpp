@@ -19,7 +19,7 @@ int main()
         PrimerMetodo(n);
     }
     else{
-       // SegundMetodo(n);
+        SegundMetodo(n);
     }
 
     return 0;
@@ -45,12 +45,19 @@ void PrimerMetodo(unsigned int n){
             throw '2';
         }
         unsigned short int con = 0;
+        char caracter;
         while(fin.good()){              //lee caracter a caracter hasta el fin del archivo
             char temp=fin.get();
             if(fin.good()){
                 Binario(temp,numbin);
                 while (con<8) {
-                    cadena2 += numbin[con];     //Asigna cada caracter leido a la cadena de caracteres
+                    if (numbin[con]==0){
+                        caracter = 48;
+                    }
+                    else {
+                        caracter = 49;
+                    }
+                    cadena2 += caracter;     //Asigna cada caracter leido a la cadena de caracteres
                     con += 1;
                 }
                 con = 0;
@@ -62,7 +69,7 @@ void PrimerMetodo(unsigned int n){
         while (tam < tamanio) {
               if(tam>=n) {
                   for(unsigned short int con = tam-(n-1); conin < n; con ++){
-                      if (copiacad2[con] == 0){
+                      if (copiacad2[con] == '0'){
                           con0 += 1;
                       }
                       else {
@@ -72,11 +79,11 @@ void PrimerMetodo(unsigned int n){
                   }
                   if(con0 == con1){
                       for(unsigned short int con = 0; con < n; con ++){
-                          if (cadena2[tam] == 0){
-                              cadena2[tam]= 1;
+                          if (cadena2[tam] == '0'){
+                              cadena2[tam]= '1';
                           }
                           else {
-                              cadena2[tam] = 0;
+                              cadena2[tam] = '0';
                           }
                           tam += 1;
                       }
@@ -84,11 +91,11 @@ void PrimerMetodo(unsigned int n){
                   if (con0 > con1) {
                       for(unsigned short int con = 0; con < n; con ++){
                           if (con % 2 != 0){
-                              if (cadena2[tam] == 0){
-                                  cadena2[tam] = 1;
+                              if (cadena2[tam] == '0'){
+                                  cadena2[tam] = '1';
                               }
                               else {
-                                  cadena2[tam] = 0;
+                                  cadena2[tam] = '0';
                               }
                           }
                           tam += 1;
@@ -97,11 +104,11 @@ void PrimerMetodo(unsigned int n){
                   if (con1 > con0) {
                       for(unsigned short int con = 0; con < n; con ++) {
                           if (conin2 % 3 == 0){
-                              if (cadena2[tam] == 0){
-                                  cadena2[tam] = 1;
+                              if (cadena2[tam] == '0'){
+                                  cadena2[tam] = '1';
                               }
                               else {
-                                  cadena2[tam] = 0;
+                                  cadena2[tam] = '0';
                               }
                           }
                           conin2 += 1;
@@ -111,11 +118,11 @@ void PrimerMetodo(unsigned int n){
               }
               else {
                   for(unsigned short int con = 0; con < n; con ++){
-                      if (cadena2[tam] == 0){
-                          cadena2[tam]= 1;
+                      if (cadena2[tam] == '0'){
+                          cadena2[tam]= '1';
                       }
                       else {
-                          cadena2[tam] = 0;
+                          cadena2[tam] = '0';
                       }
                       tam += 1;
                    }
@@ -130,9 +137,9 @@ void PrimerMetodo(unsigned int n){
         if(!fout.is_open()){
             throw '1';
         }
-        for (unsigned short int in = 0;in < tamanio; in++){
-              fout<<cadena2[in];              //escribe la palabra
-        }
+
+        fout<<cadena2;              //escribe la palabra
+
         fout.close();                      //cierra el archivo
     }
 
@@ -161,58 +168,83 @@ void Binario(int num, int* cadena){
     }
 }
 
-/*
-string str1, str2, str3;
-ifstream fin;               //stream de entrada, lectura
-ofstream fout;              //stream de salida, escritura
+void SegundMetodo(unsigned int n){
+    string Nombre, cadena2, copiacad2;
+    unsigned short int tam = 1;
+    unsigned short int tamanio = 0;
+    unsigned short int ant =0,conin = 0;
+    int numbin[8];
+    ifstream fin;               //stream de entrada, lectura
+    ofstream fout;              //stream de salida, escritura
+    cout<<"Ingrese nombre del archivo fuente (incluyendo el .txt): ";
+    cin>>Nombre;
+    cout << "¿Cuantos elementos tiene el archivo? ";
+    cin>>tamanio;
+    tamanio = tamanio*8;
 
-cout<<"Ingrese una palabra: ";
-cin>>str1;                          //lee una cadena sin espacios
+    //getline(cin,str1);      //lee una cadena con espacios
 
-//getline(cin,str1);      //lee una cadena con espacios
+    try{
+        fin.open(Nombre);        //abre el archivo para lectura
+        if(!fin.is_open()){
+            throw '2';
+        }
+        unsigned short int con = 0;
+        char caracter;
+        while(fin.good()){              //lee caracter a caracter hasta el fin del archivo
+            int temp=fin.get();
+            if(fin.good()){
+                Binario(temp,numbin);
+                while (con<8) {
+                    if (numbin[con]==0){
+                        caracter = 48;
+                    }
+                    else {
+                        caracter = 49;
+                    }
+                    cadena2 += caracter;     //Asigna cada caracter leido a la cadena de caracteres
+                    con += 1;
+                }
+                con = 0;
+            }
+        }
+        fin.close();                //Cierra el archivo de lectura.
+        copiacad2 = cadena2;
+        while (conin < tamanio ) {
+               ant = conin;
+               for(unsigned short int con = 0; con < n; con ++) {
+                   if (conin < tamanio){
+                       cadena2[conin+1] = copiacad2[conin];
+                       conin += 1;
+                   }
+                   else {
+                       break;
+                   }
+               }
+               cadena2[ant] = copiacad2[conin-1];
+        }
+        fout.open("CodifMetodo2String.txt");       //abre el archivo para escritura
+        if(!fout.is_open()){
+            throw '1';
+        }
+        fout<<cadena2;                     //escribe la palabra
+        fout.close();                   //cierra el archivo
 
-try{
-    fout.open("archivo3.txt");       //abre el archivo para escritura
-    if(!fout.is_open()){
-        throw '1';
+
     }
-    fout<<str1;                     //escribe la palabra
-    fout.close();                   //cierra el archivo
-
-    fin.open("archivo3.txt");        //abre el archivo para lectura
-    if(!fin.is_open()){
-        throw '2';
-    }
-
-
-
-    getline(fin,str3);           //lee una linea y la almacena en el string str3
-
-    fin.seekg(0);                 //vuelve al principio del archivo
-
-    while(fin.good()){              //lee caracter a caracter hasta el fin del archivo
-        char temp=fin.get();
-        if(fin.good()){
-            str2 +=temp;     //Asigna cada caracter leido a la cadena de caracteres
+    catch (char c){
+        cout<<"Error # "<<c<<": ";
+        if(c=='1'){
+            cout<<"Error al abrir el archivo para escritura.\n";
+        }
+        else if(c=='2'){
+            cout<<"Error al abrir el archivo para lectura.\n";
         }
     }
-    fin.close();                //Cierra el archivo de lectura.
-
-
-}
-catch (char c){
-    cout<<"Error # "<<c<<": ";
-    if(c=='1'){
-        cout<<"Error al abrir el archivo para escritura.\n";
+    catch (...){
+        cout<<"Error no definido\n";
     }
-    else if(c=='2'){
-        cout<<"Error al abrir el archivo para lectura.\n";
-    }
-}
-catch (...){
-    cout<<"Error no definido\n";
+
 }
 
-if(str1==str2 && str1==str3)
-    cout<<"Funciona!!!!\n";
-*/
+

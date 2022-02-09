@@ -6,7 +6,6 @@ using namespace std;
 void PrimerMetodo(unsigned int n);
 void SegundMetodo(unsigned int n);
 void Binario(int num,int* cadena);
-void codifica(int i,unsigned short int con0, unsigned short int con1,int* cadena2);
 
 int main()
 {
