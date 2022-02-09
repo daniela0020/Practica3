@@ -29,7 +29,7 @@ void PrimerMetodo(unsigned int n){
     unsigned short int tam = 1;
     unsigned short int tamanio = 0;
     int numbin[8];
-    cout << "¿Cuantos elementos tiene el archivo? ";
+    cout << "Cuantos elementos tiene el archivo: ";
     cin>>tamanio;
     tamanio = tamanio*8;
     unsigned short int con1=0,con0 = 0,conin = 0, conin2 =1 ;
@@ -180,7 +180,7 @@ void SegundMetodo(unsigned int n){
     ofstream fout;              //stream de salida, escritura
     cout<<"Ingrese nombre del archivo fuente (incluyendo el .txt): ";
     cin>>Nombre;
-    cout << "¿Cuantos elementos tiene el archivo? ";
+    cout << "Cuantos elementos tiene el archivo: ";
     cin>>tamanio;
     tamanio = tamanio*8;
 

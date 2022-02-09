@@ -27,7 +27,7 @@ void PrimerMetodo(unsigned int n){
     unsigned short int tam = 1;
     unsigned short int tamanio = 0;
     unsigned short int con1=0,con0 = 0,conin = 0, conin2 =1 ;
-    cout << "Ingrese tamaño del arreglo que va a contener el nombre del archivo fuente (contando el .txt): ";
+    cout << "Ingrese tamanio del arreglo que va a contener el nombre del archivo fuente (contando el .txt): ";
     cin >> tam;
     char* Nombre = new char [tam];
     int numbin[8];
@@ -35,7 +35,7 @@ void PrimerMetodo(unsigned int n){
     ofstream fout;              //stream de salida, escritura
     cout<<"Ingrese nombre del archivo fuente: ";
     cin>>Nombre;
-    cout << "¿Cuantos elementos tiene el archivo? ";
+    cout << "Cuantos elementos tiene el archivo: ";
     cin>>tamanio;
     tamanio = tamanio*8;
     int cadena2[tamanio];
@@ -136,7 +136,7 @@ void PrimerMetodo(unsigned int n){
              conin = 0;
 
           }
-      cout << "Ingrese tamaño del arreglo que va a contener el nombre del archivo de salida (contando el .txt): ";
+      cout << "Ingrese tamano del arreglo que va a contener el nombre del archivo de salida (contando el .txt): ";
       cin >> tam;
       char Nombre[tam];
       cout<<"Ingrese nombre del archivo de salida: ";
@@ -169,7 +169,7 @@ void SegundMetodo(unsigned int n){
     unsigned short int tam = 1;
     unsigned short int tamanio = 0;
     unsigned short int ant =0,conin = 0;
-    cout << "Ingrese tamaño del arreglo que va a contener el nombre del archivo fuente (contando el .txt): ";
+    cout << "Ingrese tamano del arreglo que va a contener el nombre del archivo fuente (contando el .txt): ";
     cin >> tam;
     char* Nombre = new char [tam];
     int numbin[8];
@@ -177,7 +177,7 @@ void SegundMetodo(unsigned int n){
     ofstream fout;              //stream de salida, escritura
     cout<<"Ingrese nombre del archivo fuente (incluyendo el .txt): ";
     cin>>Nombre;
-    cout << "¿Cuantos elementos tiene el archivo? ";
+    cout << "Cuantos elementos tiene el archivo: ";
     cin>>tamanio;
     tamanio = tamanio*8;
     int cadena2[tamanio];
@@ -220,7 +220,7 @@ void SegundMetodo(unsigned int n){
                }
                cadena2[ant] = copiacad2[conin-1];
            }
-           cout << "Ingrese tamaño del arreglo que va a contener el nombre del archivo de salida (contando el .txt): ";
+           cout << "Ingrese tamano del arreglo que va a contener el nombre del archivo de salida (contando el .txt): ";
            cin >> tam;
            char Nombre[tam];
            cout<<"Ingrese nombre del archivo de salida: ";
