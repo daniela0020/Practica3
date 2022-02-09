@@ -136,8 +136,12 @@ void PrimerMetodo(unsigned int n){
              conin = 0;
 
           }
-
-      fout.open("CodifMetodo1.txt");       //abre el archivo para escritura
+      cout << "Ingrese tamaño del arreglo que va a contener el nombre del archivo de salida (contando el .txt): ";
+      cin >> tam;
+      char Nombre[tam];
+      cout<<"Ingrese nombre del archivo de salida: ";
+      cin>>Nombre;
+      fout.open(Nombre);       //abre el archivo para escritura
       if(!fout.is_open()){
           throw '1';
       }
@@ -216,7 +220,12 @@ void SegundMetodo(unsigned int n){
                }
                cadena2[ant] = copiacad2[conin-1];
            }
-           fout.open("CodifMetodo2.txt");       //abre el archivo para escritura
+           cout << "Ingrese tamaño del arreglo que va a contener el nombre del archivo de salida (contando el .txt): ";
+           cin >> tam;
+           char Nombre[tam];
+           cout<<"Ingrese nombre del archivo de salida: ";
+           cin>>Nombre;
+           fout.open(Nombre);       //abre el archivo para escritura
            if(!fout.is_open()){
                throw '1';
            }
